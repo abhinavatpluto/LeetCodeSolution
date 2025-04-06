@@ -1,4 +1,4 @@
-package org.example;
+package org.leetCode;
 
 public class Queue {
     private int maxSize;

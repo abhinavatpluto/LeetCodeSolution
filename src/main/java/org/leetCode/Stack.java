@@ -1,4 +1,4 @@
-package org.example;
+package org.leetCode;
 
 public class Stack {
     private int maxSize;
