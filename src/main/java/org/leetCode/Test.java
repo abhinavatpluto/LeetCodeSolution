@@ -1,8 +1,6 @@
 package org.leetCode;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 public class Test {
 
@@ -42,15 +40,39 @@ public class Test {
     }
 
     public static void main(String[] args) {
-        int[] arr = {0, 0, 1, 1, 0, 0, 1, 1, 1, 0, 1, 1, 0, 0, 0, 1, 1, 1, 1};
-
-        String st = "aa adfd sdfsdf sfgsfg";
-        Optional<String> str = Arrays.stream(st.split("\\s+")).max((a, b) -> Integer.compare(a.length(), b.length()));
-        System.out.println();
-//        System.out.println(;
-        longestSub(arr, 3);
+        int[] arr = {1, 2, 3, 4};
+        int left = 0;
+        int right = arr.length - 1;
+        while (left < right) {
+            int temp = arr[left];
+            arr[left] = arr[right];
+            arr[right] = temp;
+            left++;
+            right--;
+        }
+        System.out.println(Arrays.toString(arr));
     }
 
+    public static String revString(String str) {
+        char[] ch = str.toCharArray();
+        int left = 0;
+        int right = str.length() - 1;
+
+        while (left < right) {
+            char temp = ch[left];
+            ch[left] = ch[right];
+            ch[right] = ch[temp];
+
+            left++;
+            right--;
+        }
+
+        return new String(ch);
+
+    }
+
+
+//    Arrays.stream(str.split("\\s+)).max((a,b) -> Integer.compare(a.length , b.length))
 
     public boolean increasingTriplet(int[] nums) {
 
@@ -68,7 +90,6 @@ public class Test {
 
         return false;
     }
-//    Arrays.stream(str.split("\\s+)).max((a,b) -> Integer.compare(a.length , b.length))
 
     public int missingNumber(int[] nums) {
         int expected = 0;
@@ -86,7 +107,20 @@ public class Test {
     }
 
     public List<Integer> findDisappearedNumbers(int[] nums) {
-        return null;
+        List<Integer> missingNum = new ArrayList<>();
+        int expected = 1;
+        Arrays.sort(nums);
+        for (int num : nums) {
+            if (num == expected) {
+                expected++;
+
+            } else {
+                missingNum.add(expected);
+                expected++;
+
+            }
+        }
+        return missingNum;
     }
 
     public long zeroFilledSubarray(int[] nums) {
@@ -103,6 +137,29 @@ public class Test {
         }
 
         return result;
+    }
+
+    public int majorityElement(int[] nums) {
+        Arrays.sort(nums);
+        int max = Integer.MIN_VALUE;
+
+        Map<Integer, Integer> count = new HashMap<>();
+        for (int num : nums) {
+            count.put(num, count.getOrDefault(num, 0) + 1);
+        }
+
+        int majority = nums.length / 2;
+        for (Map.Entry<Integer, Integer> entry : count.entrySet()) {
+            if (entry.getValue() > majority) {
+                return entry.getKey();
+            }
+        }
+
+        return -1;
+    }
+
+    public int[] productExceptSelf(int[] nums) {
+        return nums;
     }
 
 }

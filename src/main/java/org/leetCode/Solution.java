@@ -75,23 +75,6 @@ public class Solution {
         return prod;
     }
 
-    public static void main(String[] args) {
-        int[] arr = {1, 2, 3, 2, 5, 6, 7, 8, 8, 7};
-        int count = 1;
-        int maxCount = Integer.MIN_VALUE;
-        int ele = 1;
-        for (int i = 0; i < arr.length - 1; i++) {
-            if (arr[i] < arr[i + 1]) {
-                count++;
-                maxCount = Math.max(maxCount, count);
-
-            } else {
-                count = 0;
-            }
-        }
-        System.out.println(maxCount);
-    }
-
     public static int lenOfLongIncSubArr(List<Integer> arr) {
         int count = 1;
         int maxCount = Integer.MIN_VALUE;
@@ -144,6 +127,46 @@ public class Solution {
         return maxLen;
 
     }
+
+    public static void main(String[] args) {
+        int[] arr = {12, 2, 7, 4, 5};
+
+        int n = arr.length;
+        int[] left = new int[n];
+        int[] right = new int[n];
+        left[0] = 1;
+        for (int i = 1; i < n; i++) {
+            left[i] = left[i - 1] * arr[i - 1];
+        }
+        for (int i = 1; i <= n - 1; i++) {
+            System.out.println(left[i]);
+        }
+
+        right[n - 1] = 1;
+        for (int i = n - 2; i >= 0; i--) {
+            right[i] = right[i + 1] * arr[i + 1];
+        }
+    }
+
+    public int[] productExceptSelf(int[] nums) {
+        int n = nums.length;
+        int[] result = new int[n];
+        int[] right = new int[n];
+        int[] left = new int[n];
+        left[0] = 1;
+        for (int i = 1; i < n; i++) {
+            left[i] = left[i - 1] * nums[i - 1];
+        }
+        //  1 2 3 4 5 6  n = 6
+        right[n - 1] = 1; // right[5] = 1
+        for (int i = n - 2; i >= 0; i--) {             //  i = 4 ;
+            right[i] = right[i + 1] * nums[i + 1]; // right[4] = right[5] * 5 = 5 ,
+
+        }
+
+        return nums;
+    }
+
 
 }
 
