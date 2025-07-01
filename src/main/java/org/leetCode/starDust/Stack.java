@@ -1,4 +1,4 @@
-package org.leetCode;
+package org.leetCode.starDust;
 
 public class Stack {
     private int maxSize;
@@ -20,20 +20,21 @@ public class Stack {
 //        }
 //    }
 
-    public boolean isFull(){
+    public boolean isFull() {
         return (top == maxSize - 1);
     }
 
-    public boolean isEmpty(){
+    public boolean isEmpty() {
         return (top == -1);
     }
 
-    public int pop(){
-        if(isEmpty()){
+    public int pop() {
+        if (isEmpty()) {
             return -1;
         }
-       return stackArray[ top --];
+        return stackArray[top--];
     }
+
     public void push(int x) {
         top++;
         stackArray[top] = x;

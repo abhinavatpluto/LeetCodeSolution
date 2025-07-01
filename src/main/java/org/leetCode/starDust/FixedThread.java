@@ -1,4 +1,4 @@
-package org.leetCode;
+package org.leetCode.starDust;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -14,7 +14,7 @@ public class FixedThread {
             count.put(String.valueOf(c), count.getOrDefault(String.valueOf(c), 0) + 1);
 
         }
-        
+
         System.out.println(count);
     }
 }

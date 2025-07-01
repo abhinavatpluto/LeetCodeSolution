@@ -1,6 +1,7 @@
 package org.leetCode;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Solution {
 
@@ -126,6 +127,95 @@ public class Solution {
 
         return maxLen;
 
+    }
+
+    static int search(int arr[], int x) {
+
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] == x)
+                return i;
+        }
+        return -1;
+    }
+
+    void reverseInGroups(ArrayList<Long> arr, int k) {
+        List<Long> list = new ArrayList<>(arr);
+        if (list.size() < k) {
+            Collections.reverse(list);
+        } else {
+            for (int i = 0; i < arr.size(); i += k) {
+                int end = Math.min(i + k, arr.size());
+                Collections.reverse(list.subList(i, end));
+
+            }
+        }
+    }
+
+    public static boolean isSubset(int a[], int b[]) {
+        Set<Integer> set = new HashSet<>();
+        for (int i : a) {
+            set.add(i);
+        }
+
+        for (int i : b) {
+
+            if (!set.contains(b)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+
+    public void immediateSmaller(int arr[]) {
+        for (int i = 0; i < arr.length - 1; i++) {
+            if (arr[i] > arr[i + 1]) {
+                System.out.print(arr[i + 1] + " ");
+            } else {
+                System.out.print("-1 ");
+            }
+        }
+    }
+
+    public int[] minAnd2ndMin(int arr[]) {
+
+        int n = arr.length;
+        if (n < 2) return new int[]{-1};
+        Arrays.sort(arr);
+        for (int i = 1; i < n; i++) {
+            if (arr[i] != arr[0]) {
+                return new int[]{arr[0], arr[i]};
+            }
+        }
+        return new int[]{-1};
+    }
+
+    public List<Integer> valueEqualToIndex(List<Integer> nums) {
+        List<Integer> result = new ArrayList<>();
+        for (int i = 0; i < nums.size(); i++) {
+            if (nums.get(i) == i + 1) {
+                result.add(nums.get(i));
+            }
+        }
+
+        return result;
+    }
+
+    public void countFreq(int[] arr) {
+        HashMap<Integer, Integer> count = new HashMap<>();
+        for (int i : arr) {
+            count.put(i, count.getOrDefault(i, 0));
+        }
+    }
+
+    public void swapKth(List<Integer> arr, int k) {
+        int n = arr.size();
+        if (k > n) {
+            throw new IllegalArgumentException("k is larger than the size of the list");
+        }
+        int temp = arr.get(k - 1);
+        arr.set(k - 1, arr.get(n - k));
+        arr.set(n - k, temp);
     }
 
     public int[] productExceptSelf(int[] nums) {
@@ -338,18 +428,172 @@ public class Solution {
 
     }
 
-    // Decodes a shortened URL to its original URL.
-    public static void main(String[] args) {
-        String st = "dfjdsnjvfvfa";
-        char[] ch = st.toCharArray();
+    public static void employee() {
+        List<Employee> employees = new ArrayList<>();
+        employees.add(new Employee("HR", 50000.0, "Alice", 1));
+        employees.add(new Employee("IT", 60000.0, "Bob", 2));
+        employees.add(new Employee("Finance", 55000.0, "Charlie", 3));
+        employees.add(new Employee("Marketing", 52000.0, "Diana", 4));
+        employees.add(new Employee("Sales", 58000.0, "Eve", 5));
+        employees.add(new Employee("IT", 61000.0, "Frank", 6));
+        employees.add(new Employee("HR", 53000.0, "Grace", 7));
+        employees.add(new Employee("Finance", 57000.0, "Hank", 8));
 
-        Map<Character, Integer> count = new HashMap<>();
-        for (char c : ch) {
-            count.put(c, count.getOrDefault(c, 0) + 1);
+        Map<String, Double> highSalary = employees.stream()
+                .collect(Collectors.groupingBy(
+                        Employee::getDepartment,
+                        Collectors.collectingAndThen(
+                                Collectors.maxBy(Comparator.comparingDouble(Employee::getSalary)),
+                                emp -> emp.map(Employee::getSalary).orElse(0.0)
+                        )
+                ));
+
+        double maxSal = employees.stream().mapToDouble(Employee::getSalary).max().orElse(0.0);
+    }
+
+
+//    while(i < n){
+//        if (Character.isDigit(st.charAt(i))){
+//            int nums = 0;
+//            while(i < n && Character.isDigit(st.charAt(i))){
+//                nums = nums * 10 + (st.charAt(i) - '0');
+//                i++;
+//            }
+//
+//        }
+//    }
+
+
+    public static int secLarg(String st) {
+//        Set<Integer> digit = new TreeSet<>(Collections.reverseOrder());
+//        int n = st.length();
+//        int i = 0;
+//        for (char ch : st.toCharArray()) {
+//            if (Character.isDigit(ch)) {
+//                digit.add(ch - '0');
+//            }
+//        }
+        TreeSet<Integer> digit = st.chars()
+                .filter(Character::isDigit)
+                .map(c -> c - '0')
+                .boxed()
+                .collect(Collectors.toCollection(
+                        () -> new TreeSet<>(Collections.reverseOrder())
+                ));
+
+        Iterator<Integer> it = digit.iterator();
+        if (digit.size() < 2) {
+            return -1;
+        }
+        it.next();
+        return it.next();
+    }
+
+    public int search1(int[] nums, int target) {
+        int left = 0, right = nums.length - 1;
+        int mid = left + (right - left) / 2;
+        while (left <= right) {
+            if (target == nums[mid]) return mid;
+
+            //Check for left half if target is at left ?
+            if (nums[left] <= nums[mid]) {
+                if (nums[left] < target && target < nums[mid]) {
+                    right = mid - 1;
+                } else {
+                    left = mid + 1;
+                }
+            } else {
+                // right is sorted
+                if (nums[mid] < target && target < nums[right]) {
+                    left = mid + 1;
+                } else {
+                    right = mid - 1;
+                }
+            }
+        }
+        return -1;
+    }
+
+    public static void rotate(int[] nums, int k) {
+        k %= nums.length;
+    }
+
+    public static void reverse(int[] nums, int start, int end) {
+        while (start < end) {
+            int temp = nums[start];
+            nums[start] = nums[end];
+            nums[end] = temp;
+            start++;
+            end--;
+        }
+    }
+
+//    Input: nums1 = [1,2,3,0,0,0], m = 3, nums2 = [2,5,6], n = 3
+//    Output: [1,2,2,3,5,6]
+//    Explanation: The arrays we are merging are [1,2,3] and [2,5,6].
+//    The result of the merge is [1,2,2,3,5,6] with the underlined elements coming from nums1.
+
+    public void merge(int[] nums1, int m, int[] nums2, int n) {
+        int i = m - 1;
+        int j = n - 1;
+        int k = m + n - 1;
+        int[] num3 = new int[k];
+        while (i >= 0 && j >= 0) {
+            if (nums1[i] > nums2[j]) {
+                nums1[k--] = nums1[i--];
+            } else {
+                nums1[k--] = nums2[j];
+            }
+
+        }
+        while (j > 0) {
+            nums1[k--] = nums2[j--];
         }
 
-        System.out.println(count);
     }
+
+    public int[] twoSum(int[] numbers, int target) {        //        numbers = [2,7,11,15], target = 9
+
+
+        for (int i = 0; i < numbers.length - 1; i++) {
+            int diff = target - numbers[i];
+            for (int j = i + 1; j < numbers.length; j++) {
+                if (numbers[j] == diff) {
+                    return new int[]{i + 1, j + 1};
+                }
+            }
+        }
+        return new int[]{};
+
+    }
+
+    public int[] twoSumTwoPointer(int[] numbers, int target) {        //        numbers = [2,7,11,15], target = 9
+        int left = 0;
+        int right = numbers.length - 1;
+        while (left < right) {
+            int sum = numbers[left] + numbers[right];
+            if (sum == target) {
+                return new int[]{left + 1, right};
+            } else if (sum < target) {
+                left++;
+            } else {
+                right--;
+            }
+        }
+
+        return new int[]{};
+    }
+
+
+    public static void main(String[] args) {
+
+        int[] arr = {1, 2, 3, 4, 5, 6, 7};
+        int t = 3;
+//        twoSum(arr, t);
+        
+
+    }
+
 
 }
 

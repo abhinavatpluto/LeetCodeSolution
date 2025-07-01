@@ -5,11 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c0c31cb9-36b3-4a76-be24-500b088bbc3c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/leetCode/Employee.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/leetCode/FixedThread.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/leetCode/starDust/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/leetCode/Employee.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/leetCode/Employee.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/leetCode/FixedThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/leetCode/starDust/FixedThread.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/leetCode/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/leetCode/Queue.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/leetCode/starDust/Queue.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/leetCode/Solution.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/leetCode/Solution.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/leetCode/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/leetCode/Test.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/leetCode/Stack.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/leetCode/starDust/Stack.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/leetCode/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/leetCode/starDust/Test.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,6 +52,7 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;Application.AuthAppApplication.executor&quot;: &quot;Run&quot;,
     &quot;Application.FixedThread.executor&quot;: &quot;Run&quot;,
     &quot;Application.Solution.executor&quot;: &quot;Run&quot;,
     &quot;Application.Test.executor&quot;: &quot;Run&quot;,
@@ -60,12 +68,25 @@
   }
 }</component>
   <component name="RunManager" selected="Application.Solution">
+    <configuration name="AuthAppApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.auth.authApp.AuthAppApplication" />
+      <module name="authApp" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.auth.authApp.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="FixedThread" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="org.leetCode.FixedThread" />
+      <option name="MAIN_CLASS_NAME" value="org.leetCode.starDust.FixedThread" />
       <module name="Solution" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="org.leetCode.*" />
+          <option name="PATTERN" value="org.leetCode.starDust.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -78,7 +99,7 @@
       <module name="Solution" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="org.leetCode.*" />
+          <option name="PATTERN" value="org.leetCode.starDust.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -87,11 +108,11 @@
       </method>
     </configuration>
     <configuration name="Test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="org.leetCode.Test" />
+      <option name="MAIN_CLASS_NAME" value="org.leetCode.starDust.Test" />
       <module name="Solution" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="org.leetCode.*" />
+          <option name="PATTERN" value="org.leetCode.starDust.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -102,6 +123,7 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.Solution" />
+        <item itemvalue="Application.AuthAppApplication" />
         <item itemvalue="Application.FixedThread" />
         <item itemvalue="Application.Test" />
       </list>
